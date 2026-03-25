@@ -8,6 +8,7 @@ import yesman.epicfight.api.animation.types.MovementAnimation;
 import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.model.armature.HumanoidArmature;
+// add a @EventBusSubscriber(modid = OdachiMoveset.MODID) here
 public class OdachiAnimations {
     public static AnimationAccessor<SimpleAttackAnimation> ODACHI_AUTO1;
     public static AnimationAccessor<SimpleAttackAnimation> ODACHI_AUTO2;
@@ -15,7 +16,7 @@ public class OdachiAnimations {
     public static AnimationAccessor<StaticAnimation> ODACHI_IDLE;
     public static AnimationAccessor<MovementAnimation> ODACHI_WALK;
     public static AnimationAccessor<MovementAnimation> ODACHI_RUN;
-
+    // add a @SubscriberEvent here
     public static void registerAnimations(AnimationManager.AnimationRegistryEvent event) {
         event.newBuilder("odm", OdachiAnimations::build);
     }
