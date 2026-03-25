@@ -3,6 +3,7 @@ package pierceth.odm.api.cls;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.common.NeoForge;
+import pierceth.odm.api.exceptions.ClassLoadingException;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -45,8 +46,8 @@ import static pierceth.odm.api.cls.LoadableClassAccessor.LOADED_CLASSES;
  * }
  * </pre></blockquote>
  * <blockquote><pre>
- * public class Mod {
- *     public Mod(IEventBus modBus) {
+ * public class MyMod {
+ *     public MyMod(IEventBus modBus) {
  *         ILoadableClass.loadClass(modBus, ExampleClass.class)
  *         ILoadableClass.loadClasses(modBus, ExampleClass.class, AnotherClass.class...)
  *     }
