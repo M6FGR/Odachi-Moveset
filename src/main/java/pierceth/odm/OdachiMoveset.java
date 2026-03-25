@@ -14,7 +14,7 @@ import pierceth.odm.world.capabilities.item.WeaponCapabilityPreset;
 @Mod(OdachiMoveset.MODID)
 public class OdachiMoveset {
     public static final String MODID = "odm";
-    public static final Logger LOGGER = LogManager.getLogger("OdachiMoveset");
+    public static final Logger LOGGER = LogManager.getLogger();
     public OdachiMoveset(IEventBus modBus, ModContainer modContainer) {
         modBus.addListener(this::addCreativeTab);
         ILoadableClass.loadClasses(modBus,
