@@ -33,9 +33,12 @@ public class OdachiAnimations {
 
        // Combat Animations
         ODACHI_AUTO1 = builder.nextAccessor(combatAnimation("odachi_auto1"), accessor -> new SimpleAttackAnimation(0.1F, 0.2F, 15, 25, 0.8F, null, toolR, accessor, BIPED)
-                .addTrail("Tool_R", SimpleAttackAnimation.TrailColor.COLOR.create(0.2F, 0.2F, 0.2F), 15, 25, SimpleAttackAnimation.TrailPreset.TACHI));
-        ODACHI_AUTO1 = builder.nextAccessor(combatAnimation("odachi_auto1"), accessor -> new SimpleAttackAnimation(0.1F, 0.2F, 30, 45, 0.8F, null, toolR, accessor, BIPED));
-        ODACHI_AUTO1 = builder.nextAccessor(combatAnimation("odachi_auto1"), accessor -> new SimpleAttackAnimation(0.1F, 0.2F, 50, 65, 0.8F, null, toolR, accessor, BIPED));
+                // you can add trails here, no files are required
+                .addTrail("Tool_R", SimpleAttackAnimation.TrailColor.IRON));
+        ODACHI_AUTO1 = builder.nextAccessor(combatAnimation("odachi_auto1"), accessor -> new SimpleAttackAnimation(0.1F, 0.2F, 30, 45, 0.8F, null, toolR, accessor, BIPED)
+                .addTrail("Tool_R", SimpleAttackAnimation.TrailColor.IRON));
+        ODACHI_AUTO1 = builder.nextAccessor(combatAnimation("odachi_auto1"), accessor -> new SimpleAttackAnimation(0.1F, 0.2F, 50, 65, 0.8F, null, toolR, accessor, BIPED)
+                .addTrail("Tool_R", SimpleAttackAnimation.TrailColor.IRON));
     }
 
 
