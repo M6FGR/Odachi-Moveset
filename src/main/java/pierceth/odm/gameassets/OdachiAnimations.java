@@ -21,19 +21,21 @@ public class OdachiAnimations {
     public static void registerAnimations(AnimationManager.AnimationRegistryEvent event) {
         event.newBuilder("odm", OdachiAnimations::build);
     }
-
     private static void build(AnimationManager.AnimationBuilder builder) {
         Joint toolR = Armatures.BIPED.get().toolR;
         Joint toolL = Armatures.BIPED.get().toolR;
         Armatures.ArmatureAccessor<HumanoidArmature> BIPED = Armatures.BIPED;
 
         // Living Animations
-       ODACHI_IDLE = builder.nextAccessor(livingAnimation("odachi_idle"), accessor -> new StaticAnimation(true, accessor, BIPED));
-       ODACHI_WALK = builder.nextAccessor(livingAnimation("odachi_walk"), accessor -> new MovementAnimation(true, accessor, BIPED));
-       ODACHI_RUN =  builder.nextAccessor(livingAnimation("odachi_run"), accessor -> new MovementAnimation(true, accessor, BIPED));
+        ODACHI_IDLE = builder.nextAccessor(livingAnimation("odachi_idle"), accessor -> new StaticAnimation(true, accessor, BIPED));
+        // ODACHI_WALK = builder.nextAccessor(livingAnimation("odachi_walk"), accessor -> new MovementAnimation(true, accessor, BIPED));
+        // ODACHI_RUN =  builder.nextAccessor(livingAnimation("odachi_run"), accessor -> new MovementAnimation(true, accessor, BIPED));
 
-       // Combat Animations
-        ODACHI_AUTO1 = builder.nextAccessor(combatAnimation("odachi_auto1"), accessor ->
+        // Combat Animations (Note that the timings bellow are NOT accurate, they're just a place-holder!)
+
+        /* // remove this if you have the combat animations ready
+
+       ODACHI_AUTO1 = builder.nextAccessor(combatAnimation("odachi_auto1"), accessor ->
                 new SimpleAttackAnimation(
                         // convertTime
                         0.1F,
@@ -75,8 +77,8 @@ public class OdachiAnimations {
                         accessor, BIPED
                 )
                 .addTrail("Tool_R", SimpleAttackAnimation.TrailColor.IRON));
+            */ // remove this if you have the combat animations ready
     }
-
 
     private static String livingAnimation(String name) {
         return "biped/living/" + name;
