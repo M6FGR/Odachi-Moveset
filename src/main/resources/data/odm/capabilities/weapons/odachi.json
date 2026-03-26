@@ -1,3 +1,10 @@
 {
+  "attributes": {
+    "two_hand": {
+      "armor_negation":10.0,
+      "max_strikes":3,
+      "impact":1.4
+    }
+  },
   "type": "odm:odachi"
 }
