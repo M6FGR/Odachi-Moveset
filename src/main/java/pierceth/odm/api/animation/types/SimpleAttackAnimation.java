@@ -1,6 +1,7 @@
 package pierceth.odm.api.animation.types;
 
 import net.minecraft.world.phys.Vec3;
+import pierceth.odm.api.math.MathUtil;
 import yesman.epicfight.api.animation.*;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.AttackAnimation;
@@ -27,22 +28,22 @@ import java.util.*;
 // It can calculate attack animations too by their Frame-Window, no need to time them in seconds.
 public class SimpleAttackAnimation extends AttackAnimation {
     private final List<TrailDefinition> trailDefinitions = new ArrayList<>();
-    // seconds calculation
+    // Seconds Calculation.
     public SimpleAttackAnimation(float transitionTime, float antic, float preDelay, float contact, float recovery, @Nullable Collider collider, Joint colliderJoint, AnimationManager.AnimationAccessor<? extends SimpleAttackAnimation> accessor, AssetAccessor<? extends Armature> armature) {
         super(transitionTime, antic, preDelay, contact, recovery, collider, colliderJoint, accessor, armature);
         this.addCommonProperties();
         this.addProperty(AnimationProperty.StaticAnimationProperty.POSE_MODIFIER, Animations.ReusableSources.COMBO_ATTACK_DIRECTION_MODIFIER);
     }
 
-    // FPS calculation
+    // FPS Calculation.
     public SimpleAttackAnimation(float transitionTime, float antic, int preDelayFrame, int contactFrame, float recovery, @Nullable Collider collider, Joint colliderJoint, AnimationManager.AnimationAccessor<? extends SimpleAttackAnimation> accessor, AssetAccessor<? extends Armature> armature) {
         super(transitionTime, antic, (float) preDelayFrame / 60, (float) contactFrame / 60, recovery, collider, colliderJoint, accessor, armature);
         this.addCommonProperties();
         this.addProperty(AnimationProperty.StaticAnimationProperty.POSE_MODIFIER, Animations.ReusableSources.COMBO_ATTACK_DIRECTION_MODIFIER);
     }
 
-    // shouldBend should be disabled if the animation was a dash or an airslash,
-    // since it makes the chest rotate while attacking wherever the player is looking.
+    // shouldBend Should be disabled if the animation was a dash or an air slash,
+    // Since it makes the chest rotate while attacking wherever the player is looking.
 
     public SimpleAttackAnimation(float transitionTime, float antic, float preDelay, float contact, float recovery, boolean shouldBend, @Nullable Collider collider, Joint colliderJoint, AnimationManager.AnimationAccessor<? extends SimpleAttackAnimation> accessor, AssetAccessor<? extends Armature> armature) {
         super(transitionTime, antic, preDelay, contact, recovery, collider, colliderJoint, accessor, armature);
@@ -51,6 +52,7 @@ public class SimpleAttackAnimation extends AttackAnimation {
             this.addProperty(AnimationProperty.StaticAnimationProperty.POSE_MODIFIER, Animations.ReusableSources.COMBO_ATTACK_DIRECTION_MODIFIER);
         }
     }
+    // You can modify the basis speed of the AttackAnimation using this constructor.
     public SimpleAttackAnimation(float transitionTime, float antic, float preDelay, float contact, float recovery, boolean shouldBend, float basisSpeed, @Nullable Collider collider, Joint colliderJoint, AnimationManager.AnimationAccessor<? extends SimpleAttackAnimation> accessor, AssetAccessor<? extends Armature> armature) {
         super(transitionTime, antic, preDelay, contact, recovery, collider, colliderJoint, accessor, armature);
         this.addCommonProperties();
@@ -60,17 +62,17 @@ public class SimpleAttackAnimation extends AttackAnimation {
         }
     }
 
-    public SimpleAttackAnimation(float transitionTime, AnimationManager.AnimationAccessor<? extends SimpleAttackAnimation> accessor, AssetAccessor<? extends Armature> armature, AttackAnimation.Phase... phases) {
-        super(transitionTime, accessor, armature, phases);
-        this.addCommonProperties();
-    }
-
-    // FPS calculation
+    // FPS Calculation.
     public SimpleAttackAnimation(float transitionTime, float antic, int preDelayFrame, int contactFrame, float recovery, String trailJoint, TrailColor trailColor, @Nullable Collider collider, Joint colliderJoint, AnimationManager.AnimationAccessor<? extends SimpleAttackAnimation> accessor, AssetAccessor<? extends Armature> armature) {
         super(transitionTime, antic, (float) preDelayFrame / 60, (float) contactFrame / 60, recovery, collider, colliderJoint, accessor, armature);
         this.addTrail(trailJoint, trailColor, (float) preDelayFrame / 60, (float) contactFrame / 60);
         this.addCommonProperties();
         this.addProperty(AnimationProperty.StaticAnimationProperty.POSE_MODIFIER, Animations.ReusableSources.COMBO_ATTACK_DIRECTION_MODIFIER);
+    }
+
+    public SimpleAttackAnimation(float transitionTime, AnimationManager.AnimationAccessor<? extends SimpleAttackAnimation> accessor, AssetAccessor<? extends Armature> armature, AttackAnimation.Phase... phases) {
+        super(transitionTime, accessor, armature, phases);
+        this.addCommonProperties();
     }
 
     public SimpleAttackAnimation addTrail(String joint, TrailColor color) {
@@ -85,6 +87,7 @@ public class SimpleAttackAnimation extends AttackAnimation {
         this.trailDefinitions.add(new TrailDefinition(joint, color, begin, end, preset));
         return this;
     }
+    // FPS Calculation
     public SimpleAttackAnimation addTrail(String joint, TrailColor color, int beginFrame, int endFrane, TrailPreset preset) {
         this.trailDefinitions.add(new TrailDefinition(joint, color, (float) beginFrame / 60, (float) endFrane / 60, preset));
         return this;
@@ -205,7 +208,7 @@ public class SimpleAttackAnimation extends AttackAnimation {
         GREEN(0.2F, 1.0F, 0.2F),
         BLUE(0.2F, 0.2F, 1.0F),
         WHITE(1.0f, 1.0f, 1.0f),
-        COLOR(0, 0, 0);
+        EMPTY(0, 0, 0);
 
         float r, g, b;
         TrailColor(float r, float g, float b) {
@@ -213,11 +216,13 @@ public class SimpleAttackAnimation extends AttackAnimation {
             this.g = g;
             this.b = b;
         }
-        public TrailColor create(float r, float g, float b) {
-            this.r = r;
-            this.g = g;
-            this.b = b;
-            return this;
+
+        // we target EMPTY instance
+        public static TrailColor create(float r, float g, float b) {
+            EMPTY.r = MathUtil.limit(r, 1);
+            EMPTY.g = MathUtil.limit(g, 1);
+            EMPTY.b = MathUtil.limit(b, 1);
+            return EMPTY;
         }
     }
     public enum TrailPreset {
@@ -228,7 +233,7 @@ public class SimpleAttackAnimation extends AttackAnimation {
         LONGSWORD(new Vec3(0, 0, 0.2), new Vec3(0, 0, -1.7), 4, 4),
         TACHI(new Vec3(0, 0, -0.2), new Vec3(0, 0.4, -1.75), 6, 4),
         SPEAR(new Vec3(0.0, 0.2, -0.9), new Vec3(0.0, 0.25, -2.0), 6, 4),
-        TRAIL(null, null, 0, 0);
+        EMPTY(null, null, 0, 0);
 
         Vec3 start, end;
         int lifetime, interpolates;
@@ -240,12 +245,13 @@ public class SimpleAttackAnimation extends AttackAnimation {
         }
 
 
-        public TrailPreset create(Vec3 start, Vec3 end, int lifetime, int interpolates) {
-            this.start = start;
-            this.end = end;
-            this.lifetime = lifetime;
-            this.interpolates = interpolates;
-            return this;
+        public static TrailPreset create(Vec3 beginPos, Vec3 endPos, int lifetime, int interpolates) {
+            // we target EMPTY instance too
+            EMPTY.start = beginPos;
+            EMPTY.end = endPos;
+            EMPTY.lifetime = lifetime;
+            EMPTY.interpolates = interpolates;
+            return EMPTY;
         }
     }
 }
