@@ -44,10 +44,8 @@ public class WeaponCapabilityPreset implements ILoadableClass {
     };
 
     private void registerCapability() {
-        EpicFightEventHooks.Registry.WEAPON_CAPABILITY_PRESET.registerEvent(event -> {
-            event.getTypeEntry()
-                    .put(ResourceLocation.fromNamespaceAndPath("odm", "odachi"), ODACHI);
-        });
+        EpicFightEventHooks.Registry.WEAPON_CAPABILITY_PRESET.registerEvent(event -> event.getTypeEntry()
+                .put(ResourceLocation.fromNamespaceAndPath("odm", "odachi"), ODACHI), 1);
     }
 
     public enum OdachiCategories implements WeaponCategory {
