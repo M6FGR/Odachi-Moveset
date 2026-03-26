@@ -10,6 +10,7 @@ import pierceth.odm.api.cls.ILoadableClass;
 import pierceth.odm.client.tab.OdachiItemsTab;
 import pierceth.odm.gameassets.OdachiItems;
 import pierceth.odm.world.capabilities.item.WeaponCapabilityPreset;
+import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 @Mod(OdachiMoveset.MODID)
 public class OdachiMoveset {
@@ -22,6 +23,7 @@ public class OdachiMoveset {
                 OdachiItemsTab.class,
                 OdachiItems.class
         );
+        WeaponCategory.ENUM_MANAGER.registerEnumCls(MODID, WeaponCapabilityPreset.OdachiCategories.class);
     }
     private void addCreativeTab(BuildCreativeModeTabContentsEvent event) {
     }
