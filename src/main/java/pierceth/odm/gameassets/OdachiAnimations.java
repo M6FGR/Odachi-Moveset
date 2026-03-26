@@ -1,5 +1,6 @@
 package pierceth.odm.gameassets;
 
+import net.minecraft.world.phys.Vec3;
 import pierceth.odm.api.animation.types.SimpleAttackAnimation;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
@@ -32,12 +33,47 @@ public class OdachiAnimations {
        ODACHI_RUN =  builder.nextAccessor(livingAnimation("odachi_run"), accessor -> new MovementAnimation(true, accessor, BIPED));
 
        // Combat Animations
-        ODACHI_AUTO1 = builder.nextAccessor(combatAnimation("odachi_auto1"), accessor -> new SimpleAttackAnimation(0.1F, 0.2F, 15, 25, 0.8F, null, toolR, accessor, BIPED)
+        ODACHI_AUTO1 = builder.nextAccessor(combatAnimation("odachi_auto1"), accessor ->
+                new SimpleAttackAnimation(
+                        // convertTime
+                        0.1F,
+                        // antic
+                        0.2F,
+                        // preDelay (FPS)
+                        15,
+                        // contact (FPS)
+                        25,
+                        // recovery
+                        0.8F,
+                        null,
+                        toolR,
+                        accessor, BIPED
+                )
                 // you can add trails here, no files are required
+                .addTrail("Tool_R", SimpleAttackAnimation.TrailColor.create(1, 1, 1), SimpleAttackAnimation.TrailPreset.create(new Vec3(0.0F, 0.0F, 0.2F), new Vec3(0.0F, 0.2F, -1.2F), 3, 6)));
+        ODACHI_AUTO2 = builder.nextAccessor(combatAnimation("odachi_auto2"), accessor ->
+                new SimpleAttackAnimation(
+                        0.1F,
+                        0.2F,
+                        30,
+                        45,
+                        0.8F,
+                        null,
+                        toolR,
+                        accessor, BIPED
+                )
                 .addTrail("Tool_R", SimpleAttackAnimation.TrailColor.IRON));
-        ODACHI_AUTO1 = builder.nextAccessor(combatAnimation("odachi_auto1"), accessor -> new SimpleAttackAnimation(0.1F, 0.2F, 30, 45, 0.8F, null, toolR, accessor, BIPED)
-                .addTrail("Tool_R", SimpleAttackAnimation.TrailColor.IRON));
-        ODACHI_AUTO1 = builder.nextAccessor(combatAnimation("odachi_auto1"), accessor -> new SimpleAttackAnimation(0.1F, 0.2F, 50, 65, 0.8F, null, toolR, accessor, BIPED)
+        ODACHI_AUTO3 = builder.nextAccessor(combatAnimation("odachi_auto3"), accessor ->
+                new SimpleAttackAnimation(
+                        0.1F,
+                        0.2F,
+                        50,
+                        65,
+                        0.8F,
+                        null,
+                        toolR,
+                        accessor, BIPED
+                )
                 .addTrail("Tool_R", SimpleAttackAnimation.TrailColor.IRON));
     }
 
