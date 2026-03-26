@@ -30,7 +30,7 @@ public class WeaponCapabilityPreset implements ILoadableClass {
                 })
                 .hitSound(EpicFightSounds.BLADE_HIT.get())
                 .canBePlacedOffhand(false)
-                .swingSound(EpicFightSounds.WHOOSH_BIG.get())
+                .swingSound(EpicFightSounds.WHOOSH.get())
                 .collider(ColliderPreset.TOOLS)
                 .newStyleCombo(Styles.TWO_HAND,
                         Animations.UCHIGATANA_AUTO1, Animations.UCHIGATANA_AUTO2, Animations.UCHIGATANA_AUTO3,
