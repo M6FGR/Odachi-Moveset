@@ -1,5 +1,6 @@
 {
   "creativetab.odm": "Odachi Items",
   "block.odm.example_block": "Example Block",
-  "item.odm.odachi": "Odachi"
+  "item.odm.odachi": "Odachi",
+  "weapon_category.odm.odachi": "Odachi"
 }
