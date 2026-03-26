@@ -1,7 +1,6 @@
 package pierceth.odm;
 
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import org.apache.logging.log4j.LogManager;
@@ -16,7 +15,7 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 public class OdachiMoveset {
     public static final String MODID = "odm";
     public static final Logger LOGGER = LogManager.getLogger();
-    public OdachiMoveset(IEventBus modBus, ModContainer modContainer) {
+    public OdachiMoveset(IEventBus modBus) {
         modBus.addListener(this::addCreativeTab);
         ILoadableClass.loadClasses(modBus,
                 WeaponCapabilityPreset.class,

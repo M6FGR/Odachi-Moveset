@@ -8,7 +8,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import pierceth.odm.OdachiMoveset;
 import pierceth.odm.api.cls.ILoadableClass;
-import pierceth.odm.api.registry.ItemsRegistry;
 import pierceth.odm.gameassets.OdachiItems;
 
 import java.util.function.Supplier;
