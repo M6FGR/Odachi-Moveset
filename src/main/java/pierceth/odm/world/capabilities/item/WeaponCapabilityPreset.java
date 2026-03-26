@@ -45,25 +45,28 @@ public class WeaponCapabilityPreset implements ILoadableClass {
 
     private void registerCapability() {
         EpicFightEventHooks.Registry.WEAPON_CAPABILITY_PRESET.registerEvent(event -> {
-            event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath("odm", "odachi"), ODACHI);
+            event.getTypeEntry()
+                    .put(ResourceLocation.fromNamespaceAndPath("odm", "odachi"), ODACHI);
         });
     }
 
     public enum OdachiCategories implements WeaponCategory {
-        ODACHI;
+        ODACHI(Component.translatable("weapon_category.odm.odachi"));
         final int id;
+        final Component component;
 
-        OdachiCategories() {
+        OdachiCategories(Component component) {
             this.id = WeaponCategory.ENUM_MANAGER.assign(this);
+            this.component = component;
         }
         @Override
         public int universalOrdinal() {
-            return 0;
+            return this.id;
         }
 
         @Override
         public Component getTranslatable() {
-            return WeaponCategory.super.getTranslatable();
+            return this.component;
         }
     }
     @Override
