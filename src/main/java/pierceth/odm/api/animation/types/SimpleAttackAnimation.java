@@ -218,7 +218,7 @@ public class SimpleAttackAnimation extends AttackAnimation {
         }
 
         // we target EMPTY instance
-        public static TrailColor create(float r, float g, float b) {
+        public static TrailColor newColor(float r, float g, float b) {
             EMPTY.r = MathUtil.limit(r, 1);
             EMPTY.g = MathUtil.limit(g, 1);
             EMPTY.b = MathUtil.limit(b, 1);
@@ -245,7 +245,7 @@ public class SimpleAttackAnimation extends AttackAnimation {
         }
 
 
-        public static TrailPreset create(Vec3 beginPos, Vec3 endPos, int lifetime, int interpolates) {
+        public static TrailPreset newPreset(Vec3 beginPos, Vec3 endPos, int lifetime, int interpolates) {
             // we target EMPTY instance too
             EMPTY.start = beginPos;
             EMPTY.end = endPos;
