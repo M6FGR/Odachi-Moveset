@@ -1,6 +1,5 @@
 package pierceth.odm.gameassets;
 
-import net.minecraft.world.phys.Vec3;
 import pierceth.odm.api.animation.types.SimpleAttackAnimation;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
@@ -9,7 +8,8 @@ import yesman.epicfight.api.animation.types.MovementAnimation;
 import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.model.armature.HumanoidArmature;
-// add a @EventBusSubscriber(modid = OdachiMoveset.MODID) here
+
+//@EventBusSubscriber(modid = OdachiMoveset.MODID)
 public class OdachiAnimations {
     public static AnimationAccessor<SimpleAttackAnimation> ODACHI_AUTO1;
     public static AnimationAccessor<SimpleAttackAnimation> ODACHI_AUTO2;
@@ -17,7 +17,7 @@ public class OdachiAnimations {
     public static AnimationAccessor<StaticAnimation> ODACHI_IDLE;
     public static AnimationAccessor<MovementAnimation> ODACHI_WALK;
     public static AnimationAccessor<MovementAnimation> ODACHI_RUN;
-    // add a @SubscriberEvent here
+    //@SubscriberEvent
     public static void registerAnimations(AnimationManager.AnimationRegistryEvent event) {
         event.newBuilder("odm", OdachiAnimations::build);
     }
