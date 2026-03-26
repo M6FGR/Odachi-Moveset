@@ -50,7 +50,7 @@ public class OdachiAnimations {
                         accessor, BIPED
                 )
                 // you can add trails here, no files are required
-                .addTrail("Tool_R", SimpleAttackAnimation.TrailColor.create(1, 1, 1), SimpleAttackAnimation.TrailPreset.create(new Vec3(0.0F, 0.0F, 0.2F), new Vec3(0.0F, 0.2F, -1.2F), 3, 6)));
+                .addTrail("Tool_R", SimpleAttackAnimation.TrailColor.newColor(1, 1, 1), SimpleAttackAnimation.TrailPreset.newPreset(new Vec3(0.0F, 0.0F, 0.2F), new Vec3(0.0F, 0.2F, -1.2F), 3, 6)));
         ODACHI_AUTO2 = builder.nextAccessor(combatAnimation("odachi_auto2"), accessor ->
                 new SimpleAttackAnimation(
                         0.1F,
