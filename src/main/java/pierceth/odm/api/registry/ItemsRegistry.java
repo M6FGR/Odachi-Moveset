@@ -22,9 +22,9 @@ public class ItemsRegistry {
     public static <T extends Item> DeferredHolder<Item, T> newItem(
             String itemId,
             Function<Item.Properties, T> factory,
-            UnaryOperator<Item.Properties> propertyModifier,
-            DeferredRegister<Item> itemRegistry
-    ) {
+            DeferredRegister<Item> itemRegistry,
+            UnaryOperator<Item.Properties> propertyModifier
+            ) {
         return itemRegistry.register(itemId, () -> {
             Item.Properties props = propertyModifier.apply(new Item.Properties());
             return factory.apply(props);
@@ -33,6 +33,6 @@ public class ItemsRegistry {
 
     // Overload for simple items that don't need custom properties
     public static <T extends Item> DeferredHolder<Item, T> newItem(String itemId, Function<Item.Properties, T> factory, DeferredRegister<Item> itemRegistry) {
-        return newItem(itemId, factory, p -> p, itemRegistry);
+        return newItem(itemId, factory, itemRegistry, p -> p);
     }
 }
