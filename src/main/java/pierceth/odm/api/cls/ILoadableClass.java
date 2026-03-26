@@ -5,7 +5,6 @@ import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.common.NeoForge;
 import pierceth.odm.api.exceptions.ClassLoadingException;
 
-import java.lang.reflect.Method;
 import java.util.Arrays;
 
 import static pierceth.odm.api.cls.LoadableClassAccessor.LOGGER;
@@ -65,11 +64,6 @@ public interface ILoadableClass {
             return;
         }
 
-        if (!hasOverriddenLogic(loadableClass)) {
-            LOGGER.error("Class [{}] implements ILoadableClass but does not override any registry methods!", loadableClass.getName());
-            return;
-        }
-
         if (LOADED_CLASSES.contains(loadableClass)) {
             throw new ClassLoadingException("Class [" + loadableClass.getName() + "] is already loaded!");
         }
@@ -97,21 +91,6 @@ public interface ILoadableClass {
     private static boolean isClass(Class<?> cls) {
         return !cls.isAnnotation() || !cls.isEnum() || !cls.isRecord() || !cls.isInterface();
     }
-    private static boolean hasOverriddenLogic(Class<? extends ILoadableClass> cls) {
-        String[] methodNames = {
-                "onNeoForgeClientConstructor", "onModClientConstructor",
-                "onNeoForgeConstructor", "onModConstructor"
-        };
-
-        for (Method method : cls.getMethods()) {
-            for (String name : methodNames) {
-                if (method.getName().equals(name))
-                    return true;
-            }
-        }
-        return false;
-    }
-
 
     @SafeVarargs
     static void loadClasses(IEventBus bus, Class<? extends ILoadableClass>... loadableClasses) {
@@ -135,7 +114,7 @@ public interface ILoadableClass {
     /** Primary method to register Items, Blocks, Entities, etc... Called Directly. */
     void onModConstructor(IEventBus modBus);
 
-    /** Use to load a class under specific conditions. */
+    /** Use to load a class under specific Conditions. */
     default boolean shouldLoad() {
         return true;
     }
