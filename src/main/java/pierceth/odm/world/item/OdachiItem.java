@@ -8,15 +8,20 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Blocks;
+import yesman.epicfight.world.item.TieredWeaponItem;
 import yesman.epicfight.world.item.WeaponItem;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class OdachiItem extends WeaponItem {
+    public static ItemAttributeModifiers createOdachiAttributes() {
+        return TieredWeaponItem.createAttributes(6.0F, -1.4F);
+    }
     public OdachiItem(Properties properties) {
         super(properties.component(DataComponents.TOOL, createToolProperties()));
     }
