@@ -9,6 +9,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import pierceth.odm.OdachiMoveset;
 import pierceth.odm.api.cls.ILoadableClass;
 import pierceth.odm.api.registry.ItemsRegistry;
+import pierceth.odm.gameassets.OdachiItems;
 
 import java.util.function.Supplier;
 public class OdachiItemsTab implements ILoadableClass {
@@ -16,10 +17,10 @@ public class OdachiItemsTab implements ILoadableClass {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, OdachiMoveset.MODID);
 
     private static final Supplier<CreativeModeTab> ODM_TAB = CREATIVE_MODE_TABS.register("odm_tab", () -> CreativeModeTab.builder().icon(() ->
-                    new ItemStack(ItemsRegistry.ODACHI.get()))
+                    new ItemStack(OdachiItems.ODACHI.get()))
             .title(Component.translatable("creativetab.odm"))
             .displayItems((itemDisplayParameters, output) -> {
-                output.accept(ItemsRegistry.ODACHI.get());
+                output.accept(OdachiItems.ODACHI.get());
             })
             .build()
     );
