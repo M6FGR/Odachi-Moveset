@@ -1,16 +1,13 @@
 package pierceth.odm.api.registry;
 
-import net.minecraft.core.registries.Registries;
+import jdk.jfr.Experimental;
 import net.minecraft.world.item.Item;
-import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import pierceth.odm.api.cls.ILoadableClass;
 
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
-
+@Experimental
 public class ItemsRegistry {
     /**
      * Registers a new item with easy property manipulation.
