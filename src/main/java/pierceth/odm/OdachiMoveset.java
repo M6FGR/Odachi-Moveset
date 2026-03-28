@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 import pierceth.odm.api.cls.ILoadableClass;
 import pierceth.odm.client.tab.OdachiItemsTab;
 import pierceth.odm.gameassets.OdachiItems;
-import pierceth.odm.world.capabilities.item.WeaponCapabilityPreset;
+import pierceth.odm.world.capabilities.item.WeaponCapabilityPresets;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 @Mod(OdachiMoveset.MODID)
@@ -18,11 +18,11 @@ public class OdachiMoveset {
     public OdachiMoveset(IEventBus modBus) {
         modBus.addListener(this::addCreativeTab);
         ILoadableClass.loadClasses(modBus,
-                WeaponCapabilityPreset.class,
+                WeaponCapabilityPresets.class,
                 OdachiItemsTab.class,
                 OdachiItems.class
         );
-        WeaponCategory.ENUM_MANAGER.registerEnumCls(MODID, WeaponCapabilityPreset.OdachiCategories.class);
+        WeaponCategory.ENUM_MANAGER.registerEnumCls(MODID, WeaponCapabilityPresets.OdachiCategories.class);
     }
     private void addCreativeTab(BuildCreativeModeTabContentsEvent event) {
     }
