@@ -1,5 +1,8 @@
 package pierceth.odm.gameassets;
 
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import pierceth.odm.OdachiMoveset;
 import pierceth.odm.api.animation.types.SimpleAttackAnimation;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
@@ -9,7 +12,7 @@ import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.model.armature.HumanoidArmature;
 
-//@EventBusSubscriber(modid = OdachiMoveset.MODID)
+@EventBusSubscriber(modid = OdachiMoveset.MODID)
 public class OdachiAnimations {
     public static AnimationAccessor<SimpleAttackAnimation> ODACHI_AUTO1;
     public static AnimationAccessor<SimpleAttackAnimation> ODACHI_AUTO2;
@@ -17,7 +20,8 @@ public class OdachiAnimations {
     public static AnimationAccessor<StaticAnimation> ODACHI_IDLE;
     public static AnimationAccessor<MovementAnimation> ODACHI_WALK;
     public static AnimationAccessor<MovementAnimation> ODACHI_RUN;
-    //@SubscriberEvent
+    public static AnimationAccessor<MovementAnimation> ODACHI_SNEAK;
+    @SubscribeEvent
     public static void registerAnimations(AnimationManager.AnimationRegistryEvent event) {
         event.newBuilder("odm", OdachiAnimations::build);
     }
@@ -27,9 +31,10 @@ public class OdachiAnimations {
         Armatures.ArmatureAccessor<HumanoidArmature> BIPED = Armatures.BIPED;
 
         // Living Animations
-        ODACHI_IDLE = builder.nextAccessor(livingAnimation("odachi_idle"), accessor -> new StaticAnimation(true, accessor, BIPED));
-        // ODACHI_WALK = builder.nextAccessor(livingAnimation("odachi_walk"), accessor -> new MovementAnimation(true, accessor, BIPED));
-        // ODACHI_RUN =  builder.nextAccessor(livingAnimation("odachi_run"), accessor -> new MovementAnimation(true, accessor, BIPED));
+        ODACHI_IDLE = builder.nextAccessor(livingAnimation("hold_odachi"), accessor -> new StaticAnimation(true, accessor, BIPED));
+        ODACHI_WALK = builder.nextAccessor(livingAnimation("walk_odachi"), accessor -> new MovementAnimation(true, accessor, BIPED));
+        ODACHI_RUN =  builder.nextAccessor(livingAnimation("run_odachi"), accessor -> new MovementAnimation(true, accessor, BIPED));
+        ODACHI_SNEAK =  builder.nextAccessor(livingAnimation("sneak_odachi"), accessor -> new MovementAnimation(true, accessor, BIPED));
 
         // Combat Animations (Note that the timings bellow are NOT accurate, they're just a place-holder!)
 
