@@ -13,6 +13,7 @@ import pierceth.odm.gameassets.OdachiColliders;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.event.EpicFightEventHooks;
 import yesman.epicfight.gameasset.Animations;
+import yesman.epicfight.registry.entries.EpicFightParticles;
 import yesman.epicfight.registry.entries.EpicFightSkills;
 import yesman.epicfight.registry.entries.EpicFightSounds;
 import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
@@ -24,10 +25,10 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 import java.util.function.Function;
 
 public class WeaponCapabilityPresets implements ILoadableClass {
-    public static final Function<Item, CapabilityItem.Builder<?>> ODACHI = (item) ->
+    private final Function<Item, CapabilityItem.Builder<?>> ODACHI = (item) ->
             WeaponCapabilityRegistry.builder()
                     .withStyleConditions(entityPatch -> {
-                           if (isInOffHand(entityPatch, OdachiCategories.ROUND_SHIELD)) {
+                           if (this.isInOffHand(entityPatch, OdachiCategories.ROUND_SHIELD)) {
                                return Styles.ONE_HAND;
                            }
                            return Styles.TWO_HAND;
@@ -38,6 +39,7 @@ public class WeaponCapabilityPresets implements ILoadableClass {
                             OdachiColliders.ODACHI,
                             EpicFightSounds.WHOOSH.get(),
                             EpicFightSounds.BLADE_HIT.get(),
+                            EpicFightParticles.HIT_BLADE.get(),
                             false,
                             null,
                             EpicFightSkills.TSUNAMI.get(),
@@ -47,13 +49,13 @@ public class WeaponCapabilityPresets implements ILoadableClass {
                             Animations.UCHIGATANA_DASH,
                             Animations.UCHIGATANA_AIR_SLASH
                     )
-                    .offHandPredict(true)
-
-                    .withLivingMotion(LivingMotions.IDLE, OdachiAnimations.ODACHI_IDLE)
-                    .withLivingMotion(LivingMotions.WALK, OdachiAnimations.ODACHI_WALK)
-                    .withLivingMotion(LivingMotions.RUN, OdachiAnimations.ODACHI_RUN)
-                    .withLivingMotion(LivingMotions.KNEEL, OdachiAnimations.ODACHI_IDLE)
-                    .withLivingMotion(LivingMotions.SNEAK, OdachiAnimations.ODACHI_SNEAK)
+                    .forEachMotion(
+                            LivingMotions.IDLE, OdachiAnimations.ODACHI_IDLE,
+                            LivingMotions.WALK, OdachiAnimations.ODACHI_WALK,
+                            LivingMotions.RUN, OdachiAnimations.ODACHI_RUN,
+                            LivingMotions.KNEEL, OdachiAnimations.ODACHI_IDLE,
+                            LivingMotions.SNEAK, OdachiAnimations.ODACHI_SNEAK
+                    )
                     .newStylePreset(
                             Styles.ONE_HAND,
                             null,
@@ -69,7 +71,7 @@ public class WeaponCapabilityPresets implements ILoadableClass {
                     .withLivingMotion(LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
                     .build();
 
-    public static final Function<Item, CapabilityItem.Builder<?>> ROUNDER_SHIELD = item ->
+    private final Function<Item, CapabilityItem.Builder<?>> ROUNDER_SHIELD = item ->
             WeaponCapabilityRegistry.builder()
                     .newShieldPreset(OdachiCategories.ROUND_SHIELD)
                     .build();
@@ -78,9 +80,9 @@ public class WeaponCapabilityPresets implements ILoadableClass {
     private void registerCapability() {
         EpicFightEventHooks.Registry.WEAPON_CAPABILITY_PRESET.registerEvent(event -> {
                 event.getTypeEntry()
-                        .put(ResourceLocation.fromNamespaceAndPath("odm", "odachi"), ODACHI);
+                        .put(ResourceLocation.fromNamespaceAndPath("odm", "odachi"), this.ODACHI);
                 event.getTypeEntry()
-                        .put(ResourceLocation.fromNamespaceAndPath("odm", "round_shield"), ROUNDER_SHIELD);
+                        .put(ResourceLocation.fromNamespaceAndPath("odm", "round_shield"), this.ROUNDER_SHIELD);
         }, 1);
     }
 
@@ -105,7 +107,7 @@ public class WeaponCapabilityPresets implements ILoadableClass {
         }
     }
 
-    private static boolean isInOffHand(LivingEntityPatch<?> entityPatch, WeaponCategory category) {
+    private boolean isInOffHand(LivingEntityPatch<?> entityPatch, WeaponCategory category) {
         return entityPatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == category;
     }
     @Override
