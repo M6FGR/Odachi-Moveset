@@ -1,0 +1,38 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="GNU GENERAL PUBLIC LICENSE"
+issueTrackerURL="https://github.com/Epic-Fight/epicfight/issues"
+
+[[mods]]
+modId="odm"
+version="21.1.1"
+displayName="Odachi Moveset"
+authors="M6FGR, PierceTH"
+description="Odachi, Yes"
+
+[[mixins]]
+config="odm.mixins.json"
+
+[[accessTransformers]]
+file="META-INF/accesstransformer.cfg"
+
+[[dependencies."odm"]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies."odm"]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1, 1.22)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies."odm"]]
+modId="epicfight"
+type="required"
+versionRange="[21.15,)"
+ordering="AFTER"
+side="BOTH"
