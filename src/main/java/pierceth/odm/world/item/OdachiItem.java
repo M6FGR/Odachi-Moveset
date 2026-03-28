@@ -20,7 +20,7 @@ import java.util.List;
 
 public class OdachiItem extends WeaponItem {
     public static ItemAttributeModifiers createOdachiAttributes() {
-        return TieredWeaponItem.createAttributes(6.0F, -2.7F);
+        return TieredWeaponItem.createAttributes(8.0F, -3.0F);
     }
     public OdachiItem(Properties properties) {
         super(properties.component(DataComponents.TOOL, createToolProperties()));
