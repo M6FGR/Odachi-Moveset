@@ -1,6 +1,7 @@
 {
   "creativetab.odm": "Odachi Items",
-  "block.odm.example_block": "Example Block",
   "item.odm.odachi": "Odachi",
-  "weapon_category.odm.odachi": "Odachi"
+  "item.odm.round_shield": "Round Shield",
+  "weapon_category.odm.odachi": "Odachi",
+  "weapon_category.odm.round_shield": "Round Shield"
 }
