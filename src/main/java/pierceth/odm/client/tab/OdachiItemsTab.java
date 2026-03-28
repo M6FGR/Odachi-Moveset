@@ -20,6 +20,7 @@ public class OdachiItemsTab implements ILoadableClass {
             .title(Component.translatable("creativetab.odm"))
             .displayItems((itemDisplayParameters, output) -> {
                 output.accept(OdachiItems.ODACHI.get());
+                output.accept(OdachiItems.ROUND_SHIELD.get());
             })
             .build()
     );
