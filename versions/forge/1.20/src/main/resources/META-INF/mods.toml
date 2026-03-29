@@ -1,0 +1,44 @@
+modLoader="javafml"
+# Loader version 45 is the standard for 1.20.1
+loaderVersion="[45,)"
+license="GNU GENERAL PUBLIC LICENSE"
+issueTrackerURL="https://github.com/Epic-Fight/epicfight/issues"
+
+[[mods]]
+modId="odm"
+version="20.1.1"
+displayName="Odachi Moveset"
+# Authors remains the same
+authors="M6FGR, PierceTH"
+description="Odachi, Yes"
+
+[[mixins]]
+config="odm.mixins.json"
+
+# Note: Access Transformers moved to META-INF/accesstransformer.cfg
+# but are still declared here in 1.20.1
+[[accessTransformers]]
+file="META-INF/accesstransformer.cfg"
+
+[[dependencies."odm"]]
+# Change 'neoforge' to 'forge'
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies."odm"]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1, 1.21)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies."odm"]]
+modId="epicfight"
+mandatory=true
+# Version range for Epic Fight 1.20.1 (usually starts with 20.x)
+versionRange="[20.14,)"
+ordering="AFTER"
+side="BOTH"
