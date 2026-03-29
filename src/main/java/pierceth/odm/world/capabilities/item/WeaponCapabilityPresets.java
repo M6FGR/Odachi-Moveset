@@ -67,8 +67,10 @@ public class WeaponCapabilityPresets implements ILoadableClass {
                             Animations.LONGSWORD_AIR_SLASH
 
                     )
-                    .withLivingMotion(LivingMotions.IDLE, Animations.BIPED_HOLD_LONGSWORD)
-                    .withLivingMotion(LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
+                    .forEachMotion(
+                            LivingMotions.IDLE, OdachiAnimations.ODACHI_IDLE_ONEHAND,
+                            LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD
+                    )
                     .build();
 
     private final Function<Item, CapabilityItem.Builder<?>> ROUNDER_SHIELD = item ->

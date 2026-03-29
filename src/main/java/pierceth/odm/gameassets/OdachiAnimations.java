@@ -18,6 +18,7 @@ public class OdachiAnimations {
     public static AnimationAccessor<SimpleAttackAnimation> ODACHI_AUTO2;
     public static AnimationAccessor<SimpleAttackAnimation> ODACHI_AUTO3;
     public static AnimationAccessor<StaticAnimation> ODACHI_IDLE;
+    public static AnimationAccessor<StaticAnimation> ODACHI_IDLE_ONEHAND;
     public static AnimationAccessor<MovementAnimation> ODACHI_WALK;
     public static AnimationAccessor<MovementAnimation> ODACHI_RUN;
     public static AnimationAccessor<MovementAnimation> ODACHI_SNEAK;
@@ -32,6 +33,7 @@ public class OdachiAnimations {
 
         // Living Animations
         ODACHI_IDLE = builder.nextAccessor(livingAnimation("hold_odachi"), accessor -> new StaticAnimation(true, accessor, BIPED));
+        ODACHI_IDLE_ONEHAND = builder.nextAccessor(livingAnimation("hold_odachi_onehand"), accessor -> new StaticAnimation(true, accessor, BIPED));
         ODACHI_WALK = builder.nextAccessor(livingAnimation("walk_odachi"), accessor -> new MovementAnimation(true, accessor, BIPED));
         ODACHI_RUN =  builder.nextAccessor(livingAnimation("run_odachi"), accessor -> new MovementAnimation(true, accessor, BIPED));
         ODACHI_SNEAK =  builder.nextAccessor(livingAnimation("sneak_odachi"), accessor -> new MovementAnimation(true, accessor, BIPED));
