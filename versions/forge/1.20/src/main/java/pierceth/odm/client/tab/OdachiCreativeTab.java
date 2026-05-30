@@ -4,15 +4,13 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import pierceth.odm.OdachiMoveset;
-import pierceth.odm.api.cls.ILoadableClass;
 import pierceth.odm.gameassets.OdachiItems;
 
 import java.util.function.Supplier;
-public class OdachiItemsTab implements ILoadableClass {
-    private static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
+public class OdachiCreativeTab {
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, OdachiMoveset.MODID);
 
     public static final Supplier<CreativeModeTab> ODM_TAB = CREATIVE_MODE_TABS.register("odm_tab", () -> CreativeModeTab.builder().icon(() ->
@@ -25,8 +23,4 @@ public class OdachiItemsTab implements ILoadableClass {
             .build()
     );
 
-    @Override
-    public void onModConstructor(IEventBus modBus) {
-        CREATIVE_MODE_TABS.register(modBus);
-    }
 }

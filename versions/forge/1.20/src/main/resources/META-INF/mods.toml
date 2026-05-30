@@ -21,7 +21,6 @@ config="odm.mixins.json"
 file="META-INF/accesstransformer.cfg"
 
 [[dependencies."odm"]]
-# Change 'neoforge' to 'forge'
 modId="forge"
 mandatory=true
 versionRange="[47,)"

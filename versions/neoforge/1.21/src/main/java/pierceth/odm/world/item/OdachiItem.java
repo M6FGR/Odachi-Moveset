@@ -18,6 +18,7 @@ import yesman.epicfight.world.item.WeaponItem;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
+@ParametersAreNonnullByDefault
 public class OdachiItem extends WeaponItem {
     public static ItemAttributeModifiers createOdachiAttributes() {
         return TieredWeaponItem.createAttributes(8.0F, -3.0F);
@@ -43,7 +44,7 @@ public class OdachiItem extends WeaponItem {
     public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
         return toRepair.getItem() == Items.IRON_BARS;
     }
-    @ParametersAreNonnullByDefault
+
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         tooltipComponents.add(Component.literal("")); // a space
     }

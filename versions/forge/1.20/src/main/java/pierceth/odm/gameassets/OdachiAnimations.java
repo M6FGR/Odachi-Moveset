@@ -23,6 +23,7 @@ public class OdachiAnimations {
     public static AnimationAccessor<StaticAnimation> ODACHI_IDLE;
     public static AnimationAccessor<StaticAnimation> ODACHI_IDLE_ONEHAND;
     public static AnimationAccessor<MovementAnimation> ODACHI_WALK;
+    public static AnimationAccessor<MovementAnimation> ODACHI_WALK_ONEHAND;
     public static AnimationAccessor<MovementAnimation> ODACHI_RUN;
     public static AnimationAccessor<MovementAnimation> ODACHI_SNEAK;
     @SubscribeEvent
@@ -31,19 +32,21 @@ public class OdachiAnimations {
     }
     private static void build(AnimationManager.AnimationBuilder builder) {
         Joint toolR = Armatures.BIPED.get().toolR;
-        Joint toolL = Armatures.BIPED.get().toolR;
+        Joint toolL = Armatures.BIPED.get().toolL;
         Armatures.ArmatureAccessor<HumanoidArmature> BIPED = Armatures.BIPED;
 
         // Living Animations
         ODACHI_IDLE = builder.nextAccessor(livingAnimation("hold_odachi"), accessor -> new StaticAnimation(true, accessor, BIPED));
         ODACHI_IDLE_ONEHAND = builder.nextAccessor(livingAnimation("hold_odachi_onehand"), accessor -> new StaticAnimation(true, accessor, BIPED));
         ODACHI_WALK = builder.nextAccessor(livingAnimation("walk_odachi"), accessor -> new MovementAnimation(true, accessor, BIPED));
+        ODACHI_WALK_ONEHAND = builder.nextAccessor(livingAnimation("walk_odachi_onehand"), accessor -> new MovementAnimation(true, accessor, BIPED));
         ODACHI_RUN =  builder.nextAccessor(livingAnimation("run_odachi"), accessor -> new MovementAnimation(true, accessor, BIPED));
         ODACHI_SNEAK =  builder.nextAccessor(livingAnimation("sneak_odachi"), accessor -> new MovementAnimation(true, accessor, BIPED));
 
-        // Combat Animations (Note that the timings bellow are NOT accurate, they're just a place-holder!)
+        // Combat Animations (Note that the timing bellow are NOT accurate, they're just a place-holder!)
 
-        /* // remove this if you have the combat animations ready
+        /*
+         remove this if you have the combat animations ready
 
        ODACHI_AUTO1 = builder.nextAccessor(combatAnimation("odachi_auto1"), accessor ->
                 new SimpleAttackAnimation(
@@ -87,7 +90,8 @@ public class OdachiAnimations {
                         accessor, BIPED
                 )
                 .addTrail("Tool_R", SimpleAttackAnimation.TrailColor.IRON));
-            */ // remove this if you have the combat animations ready
+            */
+        // remove this if you have the combat animations ready
     }
 
     private static String livingAnimation(String name) {

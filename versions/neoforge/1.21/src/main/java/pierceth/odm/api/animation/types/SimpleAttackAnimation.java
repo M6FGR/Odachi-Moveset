@@ -1,7 +1,6 @@
 package pierceth.odm.api.animation.types;
 
 import net.minecraft.world.phys.Vec3;
-import pierceth.odm.api.math.MathUtil;
 import yesman.epicfight.api.animation.*;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.AttackAnimation;
@@ -219,9 +218,9 @@ public class SimpleAttackAnimation extends AttackAnimation {
 
         // we target EMPTY instance
         public static TrailColor newColor(float r, float g, float b) {
-            EMPTY.r = MathUtil.limit(r, 1);
-            EMPTY.g = MathUtil.limit(g, 1);
-            EMPTY.b = MathUtil.limit(b, 1);
+            EMPTY.r = Math.min(r, 1);
+            EMPTY.g = Math.min(g, 1);
+            EMPTY.b = Math.min(b, 1);
             return EMPTY;
         }
     }
