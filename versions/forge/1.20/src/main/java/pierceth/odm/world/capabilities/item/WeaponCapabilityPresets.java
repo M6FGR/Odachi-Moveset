@@ -15,12 +15,10 @@ import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.EpicFightSkills;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
-import yesman.epicfight.particle.HitParticleType;
 import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem.Styles;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.CapabilityItem.WeaponCategories;
-import yesman.epicfight.world.capabilities.item.ShieldCapability;
 import yesman.epicfight.world.capabilities.item.WeaponCapability;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
@@ -33,7 +31,7 @@ public class WeaponCapabilityPresets {
     private static final Function<Item, CapabilityItem.Builder> ODACHI = (item) ->
             WeaponCapability.builder()
                     .styleProvider(entityPatch -> {
-                           if (isInOffHand(entityPatch, CapabilityItem.WeaponCategories.SHIELD)) {
+                           if (isInOffHand(entityPatch, WeaponCategories.SHIELD)) {
                                return Styles.ONE_HAND;
                            }
                            return Styles.TWO_HAND;

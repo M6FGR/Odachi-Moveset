@@ -1,4 +1,4 @@
-package pierceth.odm.gameassets;
+package pierceth.odm.world.capabilities.item;
 
 import yesman.epicfight.api.collider.MultiOBBCollider;
 

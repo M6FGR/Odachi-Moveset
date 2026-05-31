@@ -26,7 +26,7 @@ public class OdachiAnimations {
 
     @SubscribeEvent
     public static void registerAnimations(AnimationManager.AnimationRegistryEvent event) {
-        event.newBuilder("odm", OdachiAnimations::build);
+        event.newBuilder(OdachiMoveset.MODID, OdachiAnimations::build);
     }
     private static void build(AnimationManager.AnimationBuilder builder) {
         Joint toolR = Armatures.BIPED.get().toolR;

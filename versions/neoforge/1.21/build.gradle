@@ -44,7 +44,6 @@ neoForge {
     runs {
         client {
             client()
-
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
@@ -105,10 +104,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 
 dependencies {
-    implementation "curse.maven:epic-fight-mod-405076:7789104"
-    implementation "curse.maven:gender-mod-epic-fight-compat-1489735:7778152"
-    implementation "curse.maven:female-gender-neoforge-481655:5579007"
-    implementation "local:skinrestorer:2.7.0"
+    implementation "curse.maven:epic-fight-mod-405076:8175609"
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
