@@ -53,7 +53,7 @@ public class OdachiAnimations {
         ODACHI_WALK = builder.nextAccessor(livingAnimation("walk_odachi"), accessor -> new SimpleMovementAnimation(true, accessor, BIPED));
         ODACHI_WALK_ONEHAND = builder.nextAccessor(livingAnimation("walk_odachi_onehand"), accessor -> new SimpleMovementAnimation(true, accessor, BIPED));
         ODACHI_RUN =  builder.nextAccessor(livingAnimation("run_odachi"), accessor -> new SimpleMovementAnimation(true, accessor, BIPED));
-        ODACHI_SNEAK =  builder.nextAccessor(livingAnimation("sneak_odachi"), accessor -> new SimpleMovementAnimation(true, accessor, BIPED));
+        ODACHI_SNEAK =  builder.nextAccessor(livingAnimation("sneak_odachi"), accessor -> new SimpleMovementAnimation(true, accessor, BIPED).addProperty(SimpleAnimationProperty.PLAY_SPEED, 0.6F));
 
         // Combat Animations (Note that the timing bellow are NOT accurate, they're just a place-holder!)
 
