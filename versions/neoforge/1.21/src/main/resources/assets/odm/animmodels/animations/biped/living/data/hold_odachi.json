@@ -1,11 +1,11 @@
 {
   "layer":"COMPOSITE_LAYER",
-  "priority":"MIDDLE",
+  "priority":"LOW",
   "masks":
   [
     {
       "livingmotion":"ALL",
-      "type":"arms"
+      "type":"right_arms"
     },
     {
       "livingmotion":"IDLE",

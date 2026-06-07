@@ -21,7 +21,6 @@ public enum OdachiCategories implements WeaponCategory {
     @Override
     public Component getTranslatable() {
         return this.component;
-
     }
 
 }

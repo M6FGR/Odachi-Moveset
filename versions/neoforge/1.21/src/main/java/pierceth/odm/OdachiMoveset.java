@@ -9,6 +9,7 @@ import pierceth.odm.gameassets.OdachiItems;
 import pierceth.odm.world.capabilities.item.OdachiCategories;
 import pierceth.odm.world.capabilities.item.OdachiItemPresets;
 import pierceth.odm.world.capabilities.item.OdachiMovesets;
+import yesman.epicfight.main.EpicFightMod;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 @Mod(OdachiMoveset.MODID)

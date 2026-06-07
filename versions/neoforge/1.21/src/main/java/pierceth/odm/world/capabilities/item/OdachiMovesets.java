@@ -1,5 +1,6 @@
 package pierceth.odm.world.capabilities.item;
 
+import net.minecraft.resources.ResourceLocation;
 import pierceth.odm.OdachiMoveset;
 import pierceth.odm.gameassets.OdachiAnimations;
 import yesman.epicfight.api.animation.AnimationManager;
@@ -28,9 +29,6 @@ public class OdachiMovesets {
                     .addLivingMotionModifier(
                              LivingMotions.KNEEL, OdachiAnimations.ODACHI_IDLE
                     )
-                    .addLivingMotionModifier(
-                             LivingMotions.SNEAK, OdachiAnimations.ODACHI_SNEAK
-                    )
                     .addComboAttacks(
                             Animations.UCHIGATANA_AUTO1,
                             Animations.UCHIGATANA_AUTO2,
@@ -38,7 +36,9 @@ public class OdachiMovesets {
                             Animations.UCHIGATANA_DASH,
                             Animations.UCHIGATANA_AIR_SLASH
                     )
-                    .addInnateSkill((itemStack, playerPatch) -> EpicFightSkills.GRASPING_SPIRE.get())
+                    .addInnateSkill(
+                            (itemStack, playerPatch) -> EpicFightSkills.GRASPING_SPIRE.get()
+                    )
     );
 
     public static final DeferredMoveset ODACHI_1H = MOVESETS.registerMoveset("odachi_1h", () ->

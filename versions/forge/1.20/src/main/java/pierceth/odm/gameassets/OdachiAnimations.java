@@ -1,16 +1,28 @@
 package pierceth.odm.gameassets;
 
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import pierceth.odm.OdachiMoveset;
+import pierceth.odm.api.animation.SimpleAnimationProperty;
 import pierceth.odm.api.animation.types.SimpleAttackAnimation;
+import pierceth.odm.api.animation.types.SimpleMovementAnimation;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
 import yesman.epicfight.api.animation.Joint;
+import yesman.epicfight.api.animation.property.AnimationProperty.StaticAnimationProperty;
 import yesman.epicfight.api.animation.types.MovementAnimation;
 import yesman.epicfight.api.animation.types.StaticAnimation;
+import yesman.epicfight.api.client.input.InputManager;
+import yesman.epicfight.api.client.input.InputMode;
+import yesman.epicfight.api.client.input.action.InputAction;
+import yesman.epicfight.api.client.input.action.MinecraftInputAction;
+import yesman.epicfight.client.events.engine.ControlEngine;
+import yesman.epicfight.client.world.capabilites.entitypatch.player.AbstractClientPlayerPatch;
+import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.model.armature.HumanoidArmature;
+import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 
 @Mod.EventBusSubscriber(
         modid = OdachiMoveset.MODID,
@@ -22,10 +34,10 @@ public class OdachiAnimations {
     public static AnimationAccessor<SimpleAttackAnimation> ODACHI_AUTO3;
     public static AnimationAccessor<StaticAnimation> ODACHI_IDLE;
     public static AnimationAccessor<StaticAnimation> ODACHI_IDLE_ONEHAND;
-    public static AnimationAccessor<MovementAnimation> ODACHI_WALK;
-    public static AnimationAccessor<MovementAnimation> ODACHI_WALK_ONEHAND;
-    public static AnimationAccessor<MovementAnimation> ODACHI_RUN;
-    public static AnimationAccessor<MovementAnimation> ODACHI_SNEAK;
+    public static AnimationAccessor<SimpleMovementAnimation> ODACHI_WALK;
+    public static AnimationAccessor<SimpleMovementAnimation> ODACHI_WALK_ONEHAND;
+    public static AnimationAccessor<SimpleMovementAnimation> ODACHI_RUN;
+    public static AnimationAccessor<SimpleMovementAnimation> ODACHI_SNEAK;
     @SubscribeEvent
     public static void registerAnimations(AnimationManager.AnimationRegistryEvent event) {
         event.newBuilder("odm", OdachiAnimations::build);
@@ -38,10 +50,10 @@ public class OdachiAnimations {
         // Living Animations
         ODACHI_IDLE = builder.nextAccessor(livingAnimation("hold_odachi"), accessor -> new StaticAnimation(true, accessor, BIPED));
         ODACHI_IDLE_ONEHAND = builder.nextAccessor(livingAnimation("hold_odachi_onehand"), accessor -> new StaticAnimation(true, accessor, BIPED));
-        ODACHI_WALK = builder.nextAccessor(livingAnimation("walk_odachi"), accessor -> new MovementAnimation(true, accessor, BIPED));
-        ODACHI_WALK_ONEHAND = builder.nextAccessor(livingAnimation("walk_odachi_onehand"), accessor -> new MovementAnimation(true, accessor, BIPED));
-        ODACHI_RUN =  builder.nextAccessor(livingAnimation("run_odachi"), accessor -> new MovementAnimation(true, accessor, BIPED));
-        ODACHI_SNEAK =  builder.nextAccessor(livingAnimation("sneak_odachi"), accessor -> new MovementAnimation(true, accessor, BIPED));
+        ODACHI_WALK = builder.nextAccessor(livingAnimation("walk_odachi"), accessor -> new SimpleMovementAnimation(true, accessor, BIPED));
+        ODACHI_WALK_ONEHAND = builder.nextAccessor(livingAnimation("walk_odachi_onehand"), accessor -> new SimpleMovementAnimation(true, accessor, BIPED));
+        ODACHI_RUN =  builder.nextAccessor(livingAnimation("run_odachi"), accessor -> new SimpleMovementAnimation(true, accessor, BIPED));
+        ODACHI_SNEAK =  builder.nextAccessor(livingAnimation("sneak_odachi"), accessor -> new SimpleMovementAnimation(true, accessor, BIPED));
 
         // Combat Animations (Note that the timing bellow are NOT accurate, they're just a place-holder!)
 

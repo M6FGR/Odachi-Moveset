@@ -12,6 +12,8 @@ import pierceth.odm.world.item.OdachiItem;
 
 public class OdachiItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, OdachiMoveset.MODID);
+
     public static final DeferredHolder<Item, OdachiItem> ODACHI = ITEMS.register("odachi", () -> new OdachiItem(new Properties().rarity(Rarity.RARE).durability(1980).attributes(OdachiItem.createOdachiAttributes())));
+
     public static final DeferredHolder<Item, ShieldItem> ROUND_SHIELD = ITEMS.register("round_shield", () -> new ShieldItem(new Properties().stacksTo(1)));
 }
